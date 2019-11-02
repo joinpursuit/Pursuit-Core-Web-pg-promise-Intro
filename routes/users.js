@@ -24,7 +24,6 @@ router.get('/all', (req, res) => {
 
 router.post('/register', (req, res) => {
     const user = req.body;
-    console.log(user);
     db.none('INSERT INTO users(firstname, lastname, age) VALUES($1, $2, $3)', [user.firstname, user.lastname, user.age])
     .then(() => {
         let response = {
