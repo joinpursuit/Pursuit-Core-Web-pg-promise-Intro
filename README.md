@@ -14,7 +14,17 @@ This app displays a list of users persisted to a SQL database and provides a UI 
 
 ## Usage
 
-### Seed the database:
+### Create the database:
+
+```
+➜ ~: psql
+psql (11.5)
+Type "help" for help.
+
+benjaminstone=# CREATE DATABASE facebook_db;
+```
+
+### Seed the database
 
 ```bash
 psql facebook_db < facebook_db.sql
