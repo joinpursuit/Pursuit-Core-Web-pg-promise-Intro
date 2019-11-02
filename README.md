@@ -1,4 +1,4 @@
-# pg-promise Introduction Projection
+# pg-promise Intro
 
 This app displays a list of users persisted to a SQL database and provides a UI for adding new users.
 
