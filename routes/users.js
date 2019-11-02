@@ -18,13 +18,13 @@ router.get('/all', (req, res) => {
         res.send(response);
     })
     .catch(function(error) {        
-        res.send('An error occurred: ' + error)
+        res.send('An error occurred: ' + error);
     });
 });
 
 router.post('/register', (req, res) => {
-    const user = req.body
-    console.log(user)
+    const user = req.body;
+    console.log(user);
     db.none('INSERT INTO users(firstname, lastname, age) VALUES($1, $2, $3)', [user.firstname, user.lastname, user.age])
     .then(() => {
         let response = {
