@@ -8,6 +8,7 @@ const connection = {
     database: 'facebook_db',
 }
 const db = pgp(connection);
+``
 
 router.get('/all', (req, res) => {
     db.any('SELECT * FROM users')
