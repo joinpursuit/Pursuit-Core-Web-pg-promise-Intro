@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post Page</title>
+    <script src="postIndex.js" async></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">User Page</a>
+    </nav>
+    <h1>Post Page</h1>
+    <form id="allPost">
+        <input type="submit" value="all the Post">
+    </form>
+    <br>
+    <form id="allPostByUser">
+        <label for="userId">User ID: </label>
+        <br>
+        <label for="User Name">Name:</label>
+        <select name="" id="userList">
+            <option value="">User Name</option>
+        </select>
+        <input type="submit" value="SubmitName">
+    </form>
+    <br>
+    <form id="newPost" action="">
+        <input type="number" name="" id="posterId" placeholder="Poster ID" required>
+        <input type="text" name="" id="body" placeholder="Post" required>
+        <input type="submit" value="Create Post">
+    </form>
+
+    <ul></ul>
+</body>
+
+</html>
