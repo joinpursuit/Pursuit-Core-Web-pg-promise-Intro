@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let posts = response.data.posts
         ul.innerHTML=""
         posts.forEach(el=>{
+            debugger
             let li = document.createElement("li")
             li.innerText = el.body
             ul.appendChild(li)
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let user = response.data.users
         let userList = document.querySelector("#userList")
         user.forEach(el=>{
+            // debugger
             let option = document.createElement("option")
             option.innerText = el.id
             option.value = el.id
