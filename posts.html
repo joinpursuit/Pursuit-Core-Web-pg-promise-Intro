@@ -22,15 +22,16 @@
     <form id="allPostByUser">
         <label for="userId">User ID: </label>
         <br>
+        <label for="User Name">Name:</label>
         <select name="" id="userList">
-            <option value="">UserName</option>
+            <option value="">User Name</option>
         </select>
         <input type="submit" value="SubmitName">
     </form>
     <br>
     <form id="newPost" action="">
-        <input type="number" name="" id="posterId" placeholder="Poster ID">
-        <input type="text" name="" id="body" placeholder="Post">
+        <input type="number" name="" id="posterId" placeholder="Poster ID" required>
+        <input type="text" name="" id="body" placeholder="Post" required>
         <input type="submit" value="Create Post">
     </form>
 
