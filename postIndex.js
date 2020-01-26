@@ -16,14 +16,23 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let response = await axios.get("http://localhost:3000/posts/all")
         let posts = response.data.posts
         ul.innerHTML=""
+        
         posts.forEach(el=>{
-            debugger
+            getPostLikes(el.id)
             let li = document.createElement("li")
             li.innerText = el.body
+            li.id=el.id
             ul.appendChild(li)
         })
     }
 
+    const getPostLikes = async(id)=>{
+        let response = await axios.get(`http://localhost:3000/likes/post/${id}`)
+        let NumOfLikes ="Post ID: "+id+ " have "+Number(response.data.postByLike.length) + " likes"
+        
+        }
+
+    
     let allPostByUser = document.querySelector("#allPostByUser")
 
     allPostByUser.addEventListener("submit", (event)=>{
@@ -41,6 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             li.innerText = el.body
             ul.appendChild(li)
         })
+        
     }
     const newPost = async()=>{
        let posterId = document.querySelector("#posterId")

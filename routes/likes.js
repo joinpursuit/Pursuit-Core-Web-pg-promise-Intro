@@ -29,17 +29,12 @@ router.get('/post/:post_id', async(req, res, next) => {
       res.status(200).json({
           postByLike,
           status:"success",
-          message:"all the likes"
+          message:"like for One Post"
       })
   } catch (error) {
       next(error)
   }
 })
-
-
-
-
-
 
 
 module.exports = router

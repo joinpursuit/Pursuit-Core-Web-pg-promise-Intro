@@ -19,24 +19,24 @@ CREATE DATABASE facebook_db;
 --     body VARCHAR
 -- );
 
--- CREATE TABLE likes(
---     id SERIAL PRIMARY KEY,
---     liker_id INT REFERENCES users (id) ON DELETE SET NULL,
---     post_id INT REFERENCES posts (id) ON DELETE CASCADE
--- );
+CREATE TABLE likes(
+    id SERIAL PRIMARY KEY,
+    liker_id INT REFERENCES users (id) ON DELETE SET NULL,
+    post_id INT REFERENCES posts (id) ON DELETE CASCADE
+);
 
 
--- INSERT INTO likes(liker_id, post)
---     VALUES(1,1),
---             (1,3),
---             (1,4),
---             (2,2),
---             (2,5),
---             (3,3),
---             (3,2),
---             (3,1),
---             (4,1),
---             (4,1);
+INSERT INTO likes(liker_id, post_id)
+    VALUES(1,1),
+            (1,3),
+            (1,4),
+            (2,2),
+            (2,5),
+            (3,3),
+            (3,2),
+            (3,1),
+            (4,1),
+            (4,1);
 
 -- INSERT INTO users(firstname, lastname, age)
 --     VALUES('Adam', 'Addams', 40),
