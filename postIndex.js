@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
     let allPost = document.querySelector("#allPost")
-    let ul = document.querySelector("ul");
+    let ul = document.querySelector("#bodyPost");
+    let numberPost = document.querySelector("#numberPost")
     let getANewPost = document.querySelector("#newPost")
+
     getANewPost.addEventListener("submit", (event)=>{
         event.preventDefault()
         newPost()
@@ -29,6 +31,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const getPostLikes = async(id)=>{
         let response = await axios.get(`http://localhost:3000/likes/post/${id}`)
         let NumOfLikes ="Post ID: "+id+ " have "+Number(response.data.postByLike.length) + " likes"
+        let li = document.createElement("li")
+        li.innerText = NumOfLikes
+        numberPost.appendChild(li)
         
         }
 
