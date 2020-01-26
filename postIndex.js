@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     getANewPost.addEventListener("submit", (event)=>{
         event.preventDefault()
         newPost()
-
     })
     allPost.addEventListener("submit", (event)=>{
         event.preventDefault()
@@ -30,8 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         event.preventDefault()
         getAllPostsByUser(event.target.elements[0].value)
     })
+
     const getAllPostsByUser = async(userID)=>{
-        console.log("hello")
         let response = await axios.get(`http://localhost:3000/posts/${userID}`)
         let allPosts =response.data.postsByUser
         ul.innerHTML=""
@@ -43,25 +42,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     }
     const newPost = async()=>{
-        console.log("hi")
        let posterId = document.querySelector("#posterId")
-       let bodyText= document.querySelector("#content")
-       let response= await axios.post("http://localhost:3000/posts/register",{posterId, bodyText})
+       let bodyText= document.querySelector("#body")
+       let response= await axios.post("http://localhost:3000/posts/register",{poster_id:posterId.value, bodyText:bodyText.value})
         let postNew = response.data.post
-        debugger
         ul.innerHTML = ""
-        // posterId.value = ""
-        // bodyInput.value = ""
-        // {poster_id:posterId.value, body:bodyInput.value}
-        postNew.forEach(el=>{
-            debugger
-            let li = document.createElement("li")
-            li.innerText = el.body
-            ul.appendChild(li)
-        })
-        
-       
+        let li = document.createElement("li")
+        li.innerText = postNew.body
+        ul.appendChild(li)
     }
+
     const getAllUserID = async()=>{
         let response = await axios.get("http://localhost:3000/users/all")
         // debugger
@@ -75,10 +65,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     }
 
-    // event.target.elements[0].value
-    
-    getAllUserID()
-
-
-    
+    getAllUserID()    
 })
