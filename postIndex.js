@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     const getAllUserID = async()=>{
         let response = await axios.get("http://localhost:3000/users/all")
-        // debugger
         let user = response.data.users
         let userList = document.querySelector("#userList")
         user.forEach(el=>{
