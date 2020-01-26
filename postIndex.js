@@ -2,11 +2,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     let allPost = document.querySelector("#allPost")
     let ul = document.querySelector("ul");
-    // console.log(allPost)
+    let getANewPost = document.querySelector("#newPost")
+    getANewPost.addEventListener("submit", (event)=>{
+        event.preventDefault()
+        newPost()
+
+    })
     allPost.addEventListener("submit", (event)=>{
         event.preventDefault()
         getAllPost()
     })
+
     const getAllPost = async()=>{
         let response = await axios.get("http://localhost:3000/posts/all")
         let posts = response.data.posts
@@ -19,10 +25,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     let allPostByUser = document.querySelector("#allPostByUser")
-    // console.log(allPostByUser)
+
     allPostByUser.addEventListener("submit", (event)=>{
         event.preventDefault()
-        // debugger
         getAllPostsByUser(event.target.elements[0].value)
     })
     const getAllPostsByUser = async(userID)=>{
@@ -30,13 +35,33 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let response = await axios.get(`http://localhost:3000/posts/${userID}`)
         let allPosts =response.data.postsByUser
         ul.innerHTML=""
+
         allPosts.forEach(el=>{
             let li = document.createElement("li")
             li.innerText = el.body
             ul.appendChild(li)
         })
     }
-    
+    const newPost = async()=>{
+        console.log("hi")
+       let posterId = document.querySelector("#posterId")
+       let bodyText= document.querySelector("#content")
+       let response= await axios.post("http://localhost:3000/posts/register",{posterId, bodyText})
+        let postNew = response.data.post
+        debugger
+        ul.innerHTML = ""
+        // posterId.value = ""
+        // bodyInput.value = ""
+        // {poster_id:posterId.value, body:bodyInput.value}
+        postNew.forEach(el=>{
+            debugger
+            let li = document.createElement("li")
+            li.innerText = el.body
+            ul.appendChild(li)
+        })
+        
+       
+    }
     const getAllUserID = async()=>{
         let response = await axios.get("http://localhost:3000/users/all")
         // debugger
