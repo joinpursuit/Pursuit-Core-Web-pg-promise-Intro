@@ -18,6 +18,12 @@ CREATE TABLE posts(
     poster_id INT REFERENCES users (id) ON DELETE CASCADE,
     body VARCHAR
 );
+CREATE TABLE likes(
+    id SERIAL PRIMARY KEY,
+    liker_id INT REFERENCES users (id) ON DELETE CASCADE,
+    post_id INT REFERENCES posts (id) ON DELETE CASCADE
+
+);
 
 INSERT INTO users(firstname, lastname, age)
     VALUES('Adam', 'Addams', 40),
@@ -38,5 +44,20 @@ INSERT INTO posts (poster_id, body)
           (5, 'I like turtles'),
           (5, 'My favorite number is 8');
 
+INSERT INTO likes (liker_id, post_id)
+    VALUES(1, 3),
+          (1, 4),
+          (1, 5),
+          (2, 1),
+          (2, 2),
+          (2, 3),
+          (2, 4),
+          (2, 5),
+          (3, 4),
+          (4, 3),
+          (5, 1);
+
 SELECT * FROM users;
 SELECT * FROM posts;
+SELECT * FROM likes;
+
